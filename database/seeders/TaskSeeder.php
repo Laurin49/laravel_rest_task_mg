@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,27 +20,31 @@ class TaskSeeder extends Seeder
     $welter_id = User::where('name', 'Welter')->first()->id;
     $schonlau_id = User::where('name', 'Schonlau')->first()->id;
 
-    Task::create(['title' => 'Kasse prüfen', 'is_done' => 0]);
-    Task::create(['title' => 'Dienstplan Ärzte', 'is_done' => 0]);
-    Task::create(['title' => 'Kassenbuch neu erstellen', 'is_done' => 0]);
-    Task::create(['title' => 'Eigenanteile kontrollieren', 'is_done' => 0]);
-    Task::create(['title' => 'In Mappe sortieren', 'is_done' => 0]);
-    Task::create(['title' => 'Aufnahmen kontrollieren', 'is_done' => 0]);
-    Task::create(['title' => 'Briefe RL / WL drucken', 'is_done' => 0]);
-    Task::create(['title' => 'Verlegungen kontrollieren', 'is_done' => 0]);
-    Task::create(['title' => 'Entlassungen kontrollieren', 'is_done' => 0]);
-    Task::create(['title' => 'Vorstationär / Nachstationär Aufnahmen', 'is_done' => 0]);
-    Task::create(['title' => 'EOFM Zuzahlung Briefe drucken', 'is_done' => 0]);
-    Task::create(['title' => 'Stationsgrafik überprüfen', 'is_done' => 0]);
+    $project_nachtschicht = Project::where('title', 'Nachtschicht')->first()->id;
+    $project_beintraining = Project::where('title', 'Beintraining')->first()->id;
+    $project_bizepstraining = Project::where('title', 'Bizepstraining')->first()->id;
 
-    Task::create(['title' => 'Kniebeugen', 'is_done' => 0]);
-    Task::create(['title' => 'Beinstrecken', 'is_done' => 0]);
-    Task::create(['title' => 'Bein-Curls', 'is_done' => 0]);
-    Task::create(['title' => 'Wadenheben', 'is_done' => 0]);
-    Task::create(['title' => 'Scott-Curls K.H.', 'is_done' => 0]);
-    Task::create(['title' => 'Hammer-Curls K.H.', 'is_done' => 0]);
-    Task::create(['title' => 'Schrägbank-Curls K.H.', 'is_done' => 0]);
-    Task::create(['title' => 'Konzentrations-Curls K.H.', 'is_done' => 0]);
-    Task::create(['title' => 'Langhantel Curls', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Kasse prüfen', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Dienstplan Ärzte', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Kassenbuch neu erstellen', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Eigenanteile kontrollieren', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'In Mappe sortieren', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Aufnahmen kontrollieren', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Briefe RL / WL drucken', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Verlegungen kontrollieren', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Entlassungen kontrollieren', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Vorstationär / Nachstationär Aufnahmen', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'EOFM Zuzahlung Briefe drucken', 'is_done' => 0]);
+    Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Stationsgrafik überprüfen', 'is_done' => 0]);
+
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_beintraining, 'title' => 'Kniebeugen', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_beintraining, 'title' => 'Beinstrecken', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_beintraining, 'title' => 'Bein-Curls', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_beintraining, 'title' => 'Wadenheben', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_beintraining, 'title' => 'Scott-Curls K.H.', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_bizepstraining, 'title' => 'Hammer-Curls K.H.', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_bizepstraining, 'title' => 'Schrägbank-Curls K.H.', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_bizepstraining, 'title' => 'Konzentrations-Curls K.H.', 'is_done' => 0]);
+    Task::create(['creator_id' => $schonlau_id, 'project_id' => $project_bizepstraining, 'title' => 'Langhantel Curls', 'is_done' => 0]);
   }
 }
