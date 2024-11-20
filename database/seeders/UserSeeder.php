@@ -31,5 +31,17 @@ class UserSeeder extends Seeder
       'password' => bcrypt('hsv1887tv'),
       'email_verified_at' => now(),
     ]);
+    User::create([
+      'name' => 'L.Reis',
+      'email' => 'reis@hsv.de',
+      'password' => bcrypt('hsv1887tv'),
+      'email_verified_at' => now(),
+    ]);
+    User::create([
+      'name' => 'M.Muheim',
+      'email' => 'muheim@hsv.de',
+      'password' => bcrypt('hsv1887tv'),
+      'email_verified_at' => now(),
+    ]);
   }
 }

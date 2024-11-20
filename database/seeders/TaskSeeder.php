@@ -20,10 +20,10 @@ class TaskSeeder extends Seeder
     $welter_id = User::where('name', 'Welter')->first()->id;
     $schonlau_id = User::where('name', 'Schonlau')->first()->id;
 
-    $project_nachtschicht = Project::where('title', 'Nachtschicht')->first()->id;
-    $project_beintraining = Project::where('title', 'Beintraining')->first()->id;
-    $project_bizepstraining = Project::where('title', 'Bizepstraining')->first()->id;
-
+    $project_nachtschicht = Project::withoutGlobalScopes()->where('title', 'Nachtschicht')->first()->id;
+    $project_beintraining = Project::withoutGlobalScopes()->where('title', 'Beintraining')->first()->id;
+    $project_bizepstraining = Project::withoutGlobalScopes()->where('title', 'Bizepstraining')->first()->id;
+    
     Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Kasse prüfen', 'is_done' => 0]);
     Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Dienstplan Ärzte', 'is_done' => 0]);
     Task::create(['creator_id' => $welter_id, 'project_id' => $project_nachtschicht, 'title' => 'Kassenbuch neu erstellen', 'is_done' => 0]);
