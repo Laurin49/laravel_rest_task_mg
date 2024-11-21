@@ -9,10 +9,16 @@ use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ProjectController extends Controller
 {
+
+  public function __construct() {
+    // project Id is called project in our routes
+    $this->authorizeResource(Project::class, 'project');
+  }
   /**
    * Display a listing of the resource.
    */
