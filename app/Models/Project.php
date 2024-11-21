@@ -32,12 +32,18 @@ class Project extends Model
     return $this->belongsToMany(User::class, Member::class);
   }
 
-  // bewirkt das nur die Projecte die der User (Creator) angelegt hat angezeigt werden
-  // nicht die Projecte die andere User erstellt haben
   protected static function booted(): void
   {
-    static::addGlobalScope('creator', function (Builder $builder) {
-      $builder->where('creator_id', Auth::id());
-    });
+    // bewirkt das nur die Projecte die der User (Creator) angelegt hat angezeigt werden
+    // nicht die Projecte die andere User erstellt haben
+    // static::addGlobalScope('creator', function (Builder $builder) {
+    //   $builder->where('creator_id', Auth::id());
+    // });
+
+    // Members of the Project can access the project
+    static::addGlobalScope('member', function (Builder $builder) {
+      $builder->whereRelation('members', 'user_id', Auth::id());
+  });
   }
+  
 }

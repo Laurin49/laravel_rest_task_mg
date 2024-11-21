@@ -13,16 +13,19 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   */
+  public function __construct()
+  {
+    // 2nd parameter is the name of the route parameter
+    $this->authorizeResource(Task::class, 'task');
+  }
+
   public function index()
   {
     $tasks = QueryBuilder::for(Task::class)
-            ->allowedFilters('is_done', 'title')
-            ->defaultSort('-created_at')
-            ->allowedSorts(['title', 'is_done', 'created_at'])
-            ->paginate();
+      ->allowedFilters('is_done', 'title')
+      ->defaultSort('-created_at')
+      ->allowedSorts(['title', 'is_done', 'created_at'])
+      ->paginate();
     return new TaskCollection($tasks);
   }
   /**
@@ -32,7 +35,7 @@ class TaskController extends Controller
   {
     $validated = $request->validated();
     $task = Auth::user()->tasks()->create($validated);
-    
+
     return new TaskResource($task);
   }
 
